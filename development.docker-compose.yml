@@ -1,0 +1,27 @@
+version: "3.0"
+services:
+  # api:
+  #   image: plutus_api
+  #   container_name: api
+  #   volumes:
+  #     - ./app:/app
+  #     - ./instance/app/:/instance/
+  #     - plutus_api_static:/static/
+      
+  db:
+    image: plutus_db
+    container_name: db
+    volumes:
+      - ./instance/mongo/:/instance/
+      - plutus_db_data:/data/db
+
+volumes:
+  plutus_api_static:
+    external: true
+  plutus_db_data:
+    external: true
+
+networks:
+  default:
+    external:
+      name: plutus_network
